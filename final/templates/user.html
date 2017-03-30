@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    User
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('user') }}" id="password" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input class="form-control" name="password_confirmation" data-validation='required' placeholder="Change Password" type="password"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" data-validation='confirmation' placeholder="Re-Enter Password" type="password"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Change</button>
+            </div>
+        </fieldset>
+    </form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+      modules: 'security'
+  });
+  $('#my-textarea').restrictLength( $('#max-length-element') );
+</script>
+{% endblock %}

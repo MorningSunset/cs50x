@@ -1,0 +1,1 @@
+Invalid chars: ^[0-9\p{L} _\.]+$

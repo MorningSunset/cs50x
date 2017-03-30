@@ -1,0 +1,149 @@
+.container
+{
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* colors for navbar */
+.navbar-default .navbar-brand .blue
+{
+    color: #537fbe;
+}
+.navbar-default .navbar-brand .red
+{
+    color: #ea433b;
+}
+.navbar-default .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+.navbar-default .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main td
+{
+    /* left-align tables' cells */
+    text-align: left;
+    height: 50%;
+}
+
+/*https://www.xul.fr/en/css/table.php*/
+
+caption
+{
+    caption-side:bottom;
+    font-weight:bold;
+    font-style:italic;
+    margin:4px;
+}
+
+.t3 th, td
+{
+    border: 3px solid #444;
+    white-space:nowrap;
+    height: 50%;
+}
+
+.t3 div{
+    display:inline-block;
+    position:relative;
+    width: 400px;
+}
+
+.t3 button{
+ position:absolute;
+ bottom:10px;
+ right:10px;
+}
+
+.t2 td
+{
+    border: 0px solid;
+    column-width:180px;
+    height: 50%;
+}
+
+.t1 td
+{
+    white-space:nowrap;
+}
+
+.t1 tr{
+    height:200px;
+}
+
+td
+{
+    font-family: Calibri;
+    font-weight:bold;
+    height: 50%;
+}
+.rowtitle
+{
+    background: #9CF;
+    font-weight:bold;
+}
+
+th
+{
+    background-color: #7BAFD4;
+}
+
+.names { font-weight: bold; }
+
+container {
+    border: 1px solid #333;
+    margin: auto;
+    text-align:center;
+}
+
+.false
+{
+    background-color:#fcfceb;
+}
+
+.true
+{
+    background-color:#f0f8ff;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+textarea {
+   width: 400px;
+   height: 100px;
+   border: 4px solid #333;
+   resize: none;
+}
+
+.bottom {
+    vertical-align:bottom;
+}
+
+.top {
+    vertical-align:top;
+}

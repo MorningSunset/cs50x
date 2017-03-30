@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    {{ error }} </br>
+    <body background="http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map1.png">
+    <form action="{{ url_for('search') }}" id='search' method="post">
+        <fieldset>
+            <div class="form-group">
+                 <input autocomplete="off" autofocus class="form-control" name="summoner" data-validation='alphanumeric' input type="text" placeholder="Username (No Spaces)"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Get Summoner</button>
+            </div>
+        </fieldset>
+    </form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+      modules: 'security'
+  });
+  $('#my-textarea').restrictLength( $('#max-length-element') );
+</script>
+{% endblock %}

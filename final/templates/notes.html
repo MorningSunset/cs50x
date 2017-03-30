@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Notes
+{% endblock %}
+
+{% block main %}
+    {% set back_image = (champ_background(champ_id[a|string])) %}
+    <body background="{{ back_image }}">
+    <table class="t3">
+    <tr>
+      <th>
+        Champ
+      </th>
+      <th>
+        Stats
+      </th>
+      <th>
+        Notes
+      </th>
+    </tr>
+    {% set counter = 0 %}
+   {% for match in matches %}
+      <tr bgcolor='{{ row_color(match.stats.win) }}'>
+   <td style="width:70px">
+    {% set champ = match.championId %}
+    {% set image = (champ_image(champ_id[champ|string])) %}
+    <img src="{{ image }}" alt="{{ champ }}" height="70" width="70"/></br>
+    <img src="{{ sum_spell(match.spell1) }}" alt="" height="35" width="35" /><img src="{{ sum_spell(match.spell2) }}" alt="" height="35" width="35"/>
+   </td>
+   <td>
+     <table class="t2">
+    <tr>
+    <td>
+    &nbsp{{ game_type(match.subType) }}
+     </td>
+     <td>
+    {{ convert_time(match.createDate) }}
+     </td>
+     <td>
+         {% set time = match.stats.timePlayed %}
+     </td>
+     <td>
+    {% for player in match.fellowPlayers %}
+    {% if player.teamId != match.teamId %}
+    {% set champ = player.championId %}
+    {% set image = (champ_image(champ_id[champ|string])) %}
+    <img src="{{ image }}" alt="{{ champ }}" height="30" width="30"/>
+    {% endif %}
+    {% endfor %}
+    </td>
+     <tr>
+    <td>
+     &nbsp<img src="static/images/champion.png" alt="score" title="Damage to Champions" height="15" width="15"/> {{ match.stats.totalDamageDealtToChampions }}
+    </td>
+    <td>
+     &nbsp<img src="static/images/1up.png" alt="level" title="Level" height="15" width="15"/> {{ match.stats.level }}
+    </td>
+    <td>
+    {% set time = game_length(match.stats.timePlayed) %}
+     &nbsp<img src="static/images/clock.png" alt="wards" title="Wards Placed" height="15" width="15"/>&nbsp {{ time }}
+    </td>
+     </tr>
+     <tr>
+    <td>
+    {% set kda = kda_score(match.stats.championsKilled, match.stats.numDeaths, match.stats.assists) %}
+    &nbsp<img src="static/images/score.png" alt="score" title="KDA" height="20" width="20"/>{{ kda }}
+     </td>
+     <td>
+     &nbsp<img src="static/images/minion.png" alt="minions" title="Minions Killed" height="15" width="15"/> {% if match.stats.neutralMinionsKilled %} {{ (match.stats.minionsKilled + match.stats.neutralMinionsKilled) }} {% else %} {{ match.stats.minionsKilled }} {% endif %}
+    </td>
+    <td>
+     &nbsp<img src="static/images/turret.png" alt="structure dmg" title="Damage to Buildings" height="15" width="15"/> {{ match.stats.totalDamageDealtToBuildings }}
+    </td>
+     </tr>
+     <tr>
+    <td>
+    &nbsp<img src="static/images/gold.png" alt="gold" title="Gold Earned" height="20" width="18"/>{{ match.stats.goldEarned}}
+     </td>
+     <td>
+     &nbsp<img src="static/images/ward.png" alt="wards" title="Wards Placed" height="12" width="12"/>&nbsp {{ match.stats.wardPlaced }}
+    </td>
+    <td>
+     &nbsp<img src="static/images/blood.png" alt="dmg taken" title="Damage Taken" height="15" width="15"/> {{ match.stats.totalDamageTaken }}
+    </td>
+    <td class="bottom">
+    {% set items = item_url(match) %}
+    {% for item in items %}
+    <img src="{{ item }}" alt="item" height="25" width="25"/>
+    {% endfor %}
+    </td>
+     </tr>
+    </tr>
+    </table>
+   </td>
+   <td>
+        {{ rows[counter]['comments'] }}
+   </td>
+   {% set counter = counter + 1 %}
+   {% endfor %}
+   </tr>
+   </table>
+{% endblock %}
